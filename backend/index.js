@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //! routes import
 const messageroute =  require("./router/message.router");
+const userroute =  require("./router/user.router");
 
 
 
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Hello World from FSHMS server" });
 });
 app.use("/api/v1/message", messageroute);
+app.use("/api/v1/user", userroute);
 
 //! server start
 connectDB()
