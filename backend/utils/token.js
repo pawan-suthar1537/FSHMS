@@ -56,6 +56,16 @@ const Admin = (req, res, next) => {
   }
 };
 
+const Patient = (req, res, next) => {
+  if (req.user.role === "patient") {
+    next();
+  } else {
+    return res
+      .status(403)
+      .json({ message: "Access forbidden only patients allowed " });
+  }
+};
+
 
 const SuperAdmin = (req, res, next) => {
   if (req.user.role === "superadmin") {
@@ -84,5 +94,6 @@ module.exports = {
   extractJWTDetails,
   extractJWTFromRequest,
   getToken,
-  SuperAdmin
+  SuperAdmin,
+  Patient
 };
