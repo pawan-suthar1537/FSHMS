@@ -1,6 +1,8 @@
 const Message = require("../models/message.model");
+const Asyncawait = require("../utils/AsyncAwait");
 
-exports.sendmsg = async (req, res) => {
+
+exports.sendmsg = Asyncawait( async (req, res) => {
   try {
     const { firstname, lastname, email, phone, message } = req.body;
     if (!firstname || !lastname || !email || !phone || !message) {
@@ -35,4 +37,4 @@ exports.sendmsg = async (req, res) => {
     console.error("Error sending message:", error.message);
     return res.status(500).json({ error: "Internal server error" });
   }
-};
+});
