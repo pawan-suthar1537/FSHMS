@@ -38,3 +38,22 @@ exports.sendmsg = Asyncawait( async (req, res) => {
     return res.status(500).json({ error: "Internal server error" });
   }
 });
+
+
+
+exports.getmsg = Asyncawait( async (req, res) => {
+  try {
+    const messages = await Message.find();
+    if (messages.length === 0){
+      return res.status(400).json({ error: "No messages found" });
+    }
+    res.status(200).json({
+      success: true,
+      message: "Messages fetched successfully",
+      data: messages,
+    });
+  } catch (error) {
+    console.error("Error fetching messages:", error.message);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+})

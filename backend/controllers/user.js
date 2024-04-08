@@ -2,6 +2,13 @@ const Asyncawait = require("../utils/AsyncAwait");
 const User = require("../models/user.model");
 const { getToken } = require("../utils/token");
 const bcryptjs = require("bcryptjs");
+const cloudinary = require("cloudinary").v2;
+
+cloudinary.config({
+  cloud_name: process.env.cloud_name,
+  api_key: process.env.api_key,
+  api_secret: process.env.api_secret,
+});
 
 exports.patientregister = Asyncawait(async (req, res) => {
   try {
@@ -111,7 +118,9 @@ exports.addadmin = Asyncawait(async (req, res) => {
 
     const isalreadyexist = await User.findOne({ email });
     if (isalreadyexist) {
-      return res.status(400).json({ message: `${isalreadyexist.role} already exists` });
+      return res
+        .status(400)
+        .json({ message: `${isalreadyexist.role} already exists` });
     }
 
     const admin = new User({
@@ -139,12 +148,11 @@ exports.addadmin = Asyncawait(async (req, res) => {
   }
 });
 
-
 exports.getalldoctors = Asyncawait(async (req, res) => {
   try {
     const doctors = await User.find({ role: "doctor" });
     if (doctors.length === 0)
-      return res.status(400).json({ message: "No doctors found" })
+      return res.status(400).json({ message: "No doctors found" });
     res.status(200).json({
       success: true,
       message: "Doctors fetched successfully",
@@ -183,5 +191,83 @@ exports.getpatientdetails = Asyncawait(async (req, res) => {
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ error: error.message });
+  }
+});
+
+exports.adddoctor = Asyncawait(async (req, res) => {
+  try {
+    const {
+      firstname,
+      lastname,
+      email,
+      password,
+      phone,
+      gender,
+      dob,
+      nic,
+      docdepartment,
+    } = req.body;
+
+    if (
+      !firstname ||
+      !lastname ||
+      !email ||
+      !password ||
+      !phone ||
+      !gender ||
+      !dob ||
+      !nic ||
+      !docdepartment 
+     
+    ) {
+      return res.status(400).json({ message: "Please enter all fields" });
+    }
+
+    if (!req.file || Object.keys(req.file).length === 0) {
+      return res
+        .status(400)
+        .json({ message: "Please upload a Avatar for Doctor" });
+    }
+
+    const isalreadyexist = await User.findOne({ email });
+    if (isalreadyexist) {
+      return res
+        .status(400)
+        .json({ message: `${isalreadyexist.role} already exists with this email` });
+    }
+
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "FSHMS/Docavatar",
+      use_filename: true,
+      unique_filename: false,
+    });
+
+    if (!result)
+      return res.status(400).json({ message: "Avatar upload failed" });
+
+    const doctor = new User({
+      firstname,
+      lastname,
+      email,
+      password,
+      phone,
+      gender,
+      dob,
+      nic,
+      docdepartment,
+      role: "doctor",
+      docprofile: result.secure_url,
+    });
+
+    await doctor.save();
+
+    res.status(201).json({
+      success: true,
+      message: "Doctor added successfully",
+      data: doctor,
+    });
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json({ error: err.message });
   }
 });

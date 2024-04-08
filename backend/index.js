@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 //! routes import
 const messageroute =  require("./router/message.router");
 const userroute =  require("./router/user.router");
+const appointmentroutes =  require("./router/appointment.router");
 
 
 
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/v1/message", messageroute);
 app.use("/api/v1/user", userroute);
+app.use("/api/v1/appointment", appointmentroutes);
 
 //! server start
 connectDB()

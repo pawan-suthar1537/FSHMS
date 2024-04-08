@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
-const jwt = require("jsonwebtoken");
-const bcryptjs = require("bcryptjs");
-const userSchema = new mongoose.Schema({
+
+const appintmentSchema = new mongoose.Schema({
   firstname: {
     type: String,
     required: true,
@@ -39,45 +38,46 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please provide your gender"],
     enum: ["male", "female"],
   },
-  password: {
+  appointment_date: {
     type: String,
-    required: [true, "Please provide your password"],
-    minLength: [5, "phone number must be at least 5 characters"],
-    // select: false,
+    required: [true, "Please provide your appointment date"],
   },
-  role: {
+  department: {
     type: String,
-    required: [true, "Please provide your role"],
-    enum: ["admin", "patient", "doctor"],
+    required: [true, "Please provide your department"],
   },
-  docdepartment: {
-    type: String,
+  doctor: {
+    firstname: {
+      type: String,
+      required: true,
+    },
+    lastname: {
+      type: String,
+      required: true,
+    },
   },
-  docprofile: {
+  isvisited: {
+    type: Boolean,
+    default: false,
+  },
+  doctorId: {
+    type: mongoose.Schema.ObjectId,
+    required: true,
+  },
+  patientId: {
+    type: mongoose.Schema.ObjectId,
+    required: true,
+  },
+  address: {
     type: String,
+    required: [true, "Please provide your address"],
+  },
+  status: {
+    type: String,
+    enum: ["pending", "approved", "rejected"],
+    default: "pending",
   },
 });
 
-userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
-    return next();
-  }
-
-  try {
-    const hashedPassword = await bcryptjs.hash(this.password, 10);
-    this.password = hashedPassword;
-    next();
-  } catch (error) {
-    return next(error);
-  }
-});
-
-
-userSchema.methods.comparePassword = async function (password) {
-  return await bcryptjs.compare(password, this.password);
-};
-
-
-
-const user = mongoose.model("user", userSchema);
-module.exports = user;
+const appointment = mongoose.model("appointment", appintmentSchema);
+module.exports = appointment;
