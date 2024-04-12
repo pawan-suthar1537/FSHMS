@@ -5,7 +5,7 @@ const Asyncawait = require("../utils/AsyncAwait");
 exports.sendmsg = Asyncawait( async (req, res) => {
   try {
     const { firstname, lastname, email, phone, message } = req.body;
-    if (!firstname || !lastname || !email || !phone || !message) {
+    if (!firstname || !email || !phone || !message) {
       return res.status(422).json({ error: "Please fill all the fields" });
     }
 

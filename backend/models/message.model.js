@@ -9,7 +9,6 @@ const messageSchema = new mongoose.Schema({
   },
   lastname: {
     type: String,
-    required: true,
     minLength: [3, "lastname must be at least 3 characters"],
   },
   email: {

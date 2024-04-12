@@ -75,8 +75,8 @@ h6 {
 .hero {
   display: flex;
   gap: 50px;
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   position: relative;
 }
 .hero .banner {
