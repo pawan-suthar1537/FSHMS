@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../main";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [show, setshow] = useState(false);
@@ -9,7 +10,9 @@ const Navbar = () => {
 
   const handlelogout = async () => {
     try {
-      //  login kwakt jo token save hua patient ka usko delete krr k setisauth ko false krr do
+      localStorage.removeItem("patienttoken");
+      setisauth(false);
+      toast.success("Logout Successfull");
     } catch (error) {
       console.log(error);
     }
@@ -23,13 +26,13 @@ const Navbar = () => {
     <nav className="container">
       <div className="logo">Zeecare</div>
       <div className={show ? "navLinks showmenu" : "navLinks"}>
-      <div className="links">
-        <Link to={"/"}>HOME</Link>
-        <Link to={"/appointment"}>APPOINTMENT</Link>
-        <Link to={"about"}>ABOUTUS</Link>
+        <div className="links">
+          <Link to={"/"}>HOME</Link>
+          <Link to={"/appointment"}>APPOINTMENT</Link>
+          <Link to={"about"}>ABOUTUS</Link>
+        </div>
       </div>
-      </div>
-      
+
       {isauth ? (
         <button className="logoutBtn btn" onClick={handlelogout}>
           LOGOUT

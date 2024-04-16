@@ -20,16 +20,16 @@ const Biography = ({ img }) => {
           deserunt alias? Cupiditate voluptate neque fuga, similique quisquam,
           dolore fugit alias quas, dicta commodi corporis impedit!
         </p>
-        <pl>
+        <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nam
           deserunt alias? Cupiditate voluptate neque fuga, similique quisquam,
           dolore fugit alias quas, dicta commodi corporis impedit!
-        </pl>
-        <pl>
+        </p>
+        <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nam
           deserunt alias? Cupiditate voluptate neque fuga, similique quisquam,
           dolore fugit alias quas, dicta commodi corporis impedit!
-        </pl>
+        </p>
       </div>
     </div>
   );

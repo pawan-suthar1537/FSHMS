@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../main";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -36,8 +36,9 @@ const Login = () => {
     }
   };
 
+
   if (isauth) {
-    return <navigate to={"/"} />;
+    return <Navigate to={"/"} />;
   }
 
   return (
