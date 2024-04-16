@@ -2,14 +2,14 @@ import React, { createContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 
-export const context = createContext({ isauth: false });
+export const Context = createContext({ isauth: false });
 
 const AppWrapper = () => {
   const [isauth, setisauth] = useState(false);
   const [user, setuser] = useState({});
 
   return (
-    <context.Provider
+    <Context.Provider
       value={{
         isauth,
         setisauth,
@@ -18,7 +18,7 @@ const AppWrapper = () => {
       }}
     >
       <App />
-    </context.Provider>
+    </Context.Provider>
   );
 };
 
