@@ -17,22 +17,38 @@ const App = () => {
   const server = import.meta.env.VITE_REACT_APP_HOST;
 
   const { isauth, setisauth, setuser } = useContext(Context);
+
+  // console.log("app.js 22", token)
+
   useEffect(() => {
     const fetchuser = async () => {
-      try {
-        const res = axios.get(`${server}/api/v1/user/patient/me`, {
-          withCredentials: true,
-        });
-        setisauth(true);
-        setuser(res.data.user);
-      } catch (error) {
-        console.log(error.message);
-        setisauth(false);
-        setuser({});
-      }
+        const token = localStorage.getItem("patienttoken");
+        if (!token) {
+            setisauth(false);
+            setuser({});
+            return;
+        }
+
+        try {
+            const res = await axios.get(`${server}/api/v1/user/patient/me`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+                withCredentials: true,
+            });
+            setisauth(true);
+            console.log("patientdetailsafterloginbytoken",res.data.data);
+            setuser(res.data.data);
+        } catch (error) {
+            console.log(error.message);
+            setisauth(false);
+            setuser({});
+        }
     };
     fetchuser();
-  }, [isauth]);
+}, [isauth]);
+
+
   return (
     <>
       <Router>

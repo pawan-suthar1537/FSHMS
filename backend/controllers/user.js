@@ -69,7 +69,7 @@ exports.patientregister = Asyncawait(async (req, res) => {
 exports.login = Asyncawait(async (req, res) => {
   try {
     const { email, password, role } = req.body;
-    if (!email || !password || !role) {
+    if (!email || !password ) {
       return res.status(400).json({ message: "Please enter all fields" });
     }
     const user = await User.findOne({ email });

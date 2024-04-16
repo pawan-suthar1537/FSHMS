@@ -15,11 +15,11 @@ const Biography = ({ img }) => {
           modi. Ducimus labore veniam unde sunt. Neque a facere harum totam
           officiis, quaerat nisi.
         </p>
-        <pl>
+        <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nam
           deserunt alias? Cupiditate voluptate neque fuga, similique quisquam,
           dolore fugit alias quas, dicta commodi corporis impedit!
-        </pl>
+        </p>
         <pl>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nam
           deserunt alias? Cupiditate voluptate neque fuga, similique quisquam,
