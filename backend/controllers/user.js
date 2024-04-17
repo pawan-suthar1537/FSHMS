@@ -156,7 +156,7 @@ exports.getalldoctors = Asyncawait(async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Doctors fetched successfully",
-      data: doctors,
+      doctors,
     });
   } catch (error) {
     console.log(error.message);
