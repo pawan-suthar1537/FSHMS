@@ -50,7 +50,7 @@ const Register = () => {
   return (
     <div className="container form-component register-form">
       <h2>Sign Up</h2>
-      <p>Please Sign Up To Continue</p>
+      <p>New to AppointMed? Sign up for an account to schedule appointments and manage your healthcare journey</p>
       
       <form onSubmit={handleregister}>
         <div>

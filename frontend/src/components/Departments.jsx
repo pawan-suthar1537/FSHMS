@@ -69,8 +69,9 @@ const Departments = () => {
         responsive={responsive}
         autoPlay={true}
         autoPlaySpeed={1200}
+        loop={true}
 
-        removeArrowOnDeviceType={["tablet", "mobile"]}
+        // removeArrowOnDeviceType={["tablet"]}
       >
         {departmentsArray.map((depart, index) => {
           return (

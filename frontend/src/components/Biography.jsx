@@ -8,28 +8,9 @@ const Biography = ({ img }) => {
         <p>Biography</p>
         <h3>Who we are</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque fuga,
-          architecto modi officiis quos laudantium libero porro exercitationem?
-          Doloremque facilis sint eveniet ad itaque corporis, quod delectus vel
-          porro aliquam ducimus accusantium accusamus, quo asperiores officiis
-          modi. Ducimus labore veniam unde sunt. Neque a facere harum totam
-          officiis, quaerat nisi.
+        AppointMed is driven by a team of healthcare enthusiasts and technology experts. We saw firsthand the challenges patients and providers faced in scheduling appointments, and we knew there had to be a better way.  Fueled by this passion, we developed AppointMed to bridge the gap between patients and doctors, creating a smoother and more efficient healthcare experience for everyone
         </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nam
-          deserunt alias? Cupiditate voluptate neque fuga, similique quisquam,
-          dolore fugit alias quas, dicta commodi corporis impedit!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nam
-          deserunt alias? Cupiditate voluptate neque fuga, similique quisquam,
-          dolore fugit alias quas, dicta commodi corporis impedit!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nam
-          deserunt alias? Cupiditate voluptate neque fuga, similique quisquam,
-          dolore fugit alias quas, dicta commodi corporis impedit!
-        </p>
+        
       </div>
     </div>
   );

@@ -42,16 +42,22 @@ const Footer = () => {
         <hr />
         <div className="content">
           <div>
-          <div style={{
-            fontSize: "2.1rem",
-            fontWeight: "bold",
-
-          }} className="logo">Zeecare</div>
+            <div
+              style={{
+                fontSize: "2.1rem",
+                fontWeight: "bold",
+              }}
+              className="logo"
+            >
+              AppointMed
+            </div>
           </div>
           <div>
             <h4>Quick Links</h4>
             <ul>
-              <Link to={"/"}>Home</Link>
+              <Link style={{ textDecoration: "none" }} to={"/"}>
+                Home
+              </Link>
               <Link to={"/appointment"}>Appointment</Link>
               <Link to={"/about"}>About</Link>
             </ul>
@@ -62,8 +68,8 @@ const Footer = () => {
               return (
                 <li key={element.id}>
                   <span>{element.day}</span>
-
-                  <span>{element.time}</span>
+                  <br />
+                  <span style={{ marginLeft: "20px" }}>{element.time}</span>
                 </li>
               );
             })}
@@ -71,18 +77,18 @@ const Footer = () => {
           <div>
             <h4>Contact</h4>
             <div>
-              <FaPhone/>
-              
+              <FaPhone />
+
               <a href="tel:+91 9876543210">+91 9876543210</a>
             </div>
-            
+
             <div>
               <MdEmail />
               <a href="mailto:info@example.com">info@example.com</a>
             </div>
 
             <div>
-              <FaLocationArrow/>
+              <FaLocationArrow />
               <span>Bikaner,Rajasthan</span>
             </div>
           </div>

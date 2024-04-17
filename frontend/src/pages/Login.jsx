@@ -44,11 +44,9 @@ const Login = () => {
   return (
     <div className="container form-component login-form">
       <h2>Sign In</h2>
-      <p>Please Login To Continue</p>
+      
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
-        tenetur assumenda dolore. Cumque nam sed necessitatibus expedita aperiam
-        recusandae dolores.
+      Welcome Back! Please sign in to your account
       </p>
       <form onSubmit={handlelogin}>
         <input
