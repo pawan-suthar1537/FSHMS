@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const AppointmentForm = () => {
@@ -22,7 +22,7 @@ const AppointmentForm = () => {
   const [isvisited, setisvisited] = useState("");
   const [doctor, setdoctor] = useState([]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const DepartMentarrya = [
     "cardio",
@@ -37,8 +37,6 @@ const AppointmentForm = () => {
   ];
 
   useEffect(() => {
-    
-
     const fetchdoc = async () => {
       const { data } = await axios.get(`${server}/api/v1/user/doctors`, {
         withCredentials: true,
@@ -53,37 +51,39 @@ const AppointmentForm = () => {
     try {
       const token = localStorage.getItem("patienttoken");
       const hasvisitedbool = Boolean(isvisited);
-      const res = await  axios.post(`${server}/api/v1/appointment/makeappoinement`,{
-        firstname,
-        lastname,
-        email,
-        phone,
-        dob,
-        nic,
-        gender,
-        appointment_date,
-        department,
-        doctor_firstname,
-        doctor_lastname,
-        address,
-        isvisited:hasvisitedbool,
-      },{
-        withCredentials:true,
-        headers:{
-          Authorization:`Bearer ${token}`,
-          "Content-Type":"application/json"
-        } 
-      })
+      const res = await axios.post(
+        `${server}/api/v1/appointment/makeappoinement`,
+        {
+          firstname,
+          lastname,
+          email,
+          phone,
+          dob,
+          nic,
+          gender,
+          appointment_date,
+          department,
+          doctor_firstname,
+          doctor_lastname,
+          address,
+          isvisited: hasvisitedbool,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       console.log(res.data);
-    
-    // Show a toast message for success
-    toast.success(res.data.message);
+
+      // Show a toast message for success
+      toast.success(res.data.message);
       navigate("/");
-      
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message);
-      
     }
   };
 
