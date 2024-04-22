@@ -5,8 +5,10 @@ import App from "./App.jsx";
 export const Context = createContext({ isauth: false });
 
 const AppWrapper = () => {
-  const [isauth, setisauth] = useState(false);
   const [user, setuser] = useState({});
+  const [isauth, setisauth] = useState(false);
+  const [admin, setadmin] = useState({});
+  const [adminauth, setadminauth] = useState(false);
 
   return (
     <Context.Provider
@@ -15,6 +17,10 @@ const AppWrapper = () => {
         setisauth,
         user,
         setuser,
+        admin,
+        setadmin,
+        adminauth,
+        setadminauth,
       }}
     >
       <App />
