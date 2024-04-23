@@ -77,7 +77,7 @@ const App = () => {
 
     fetchAdmin();
     fetchPatient();
-  }, [isauth, admin]);
+  }, []);
 
   const isDashboardRoute =
     location.pathname.includes("/dashboard") ||

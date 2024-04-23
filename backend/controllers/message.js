@@ -50,7 +50,7 @@ exports.getmsg = Asyncawait( async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Messages fetched successfully",
-      data: messages,
+      messages,
     });
   } catch (error) {
     console.error("Error fetching messages:", error.message);
