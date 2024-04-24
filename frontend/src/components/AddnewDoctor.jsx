@@ -96,7 +96,7 @@ const AddnewDoctor = () => {
 
         <form onSubmit={handleadddoctor}>
           <div className={s["first-wrapper"]}>
-            <img
+            <img style={{height:"100px", width:"100px", objectFit:"cover"}}
               src={docprofilepreview ? `${docprofilepreview}` : "./broken.png"}
             />
           </div>

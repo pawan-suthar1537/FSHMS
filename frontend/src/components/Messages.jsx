@@ -35,12 +35,9 @@ const Messages = () => {
   if (!adminauth) {
     return <Navigate to={"/admin/login"} />;
   }
-  
 
   return (
     <>
-      
-
       <section className={`${s.page} ${s.messages}`}>
         <h1>MESSAGES</h1>
         <div className={s.banner}>
